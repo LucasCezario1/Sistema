@@ -21,7 +21,7 @@ public class SistemaImpl implements SistemaService {
         return sistemaRepository.findAll();
     }
 
-    // pega 1 usasurio
+    // pega 1 usuario pelo id
     @Override
     public Sistema getUserById(Long id) {
         return sistemaRepository.findById(id).orElseThrow(RuntimeException:: new);
@@ -34,7 +34,7 @@ public class SistemaImpl implements SistemaService {
         sistemaRepository.deleteByLogin(login);
     }
 
-    //Ciar Usaurio e como regra de negocio pode ter 1 Usuario com o mesmo login
+    //Ciar Usaurio e como regra de negocio que nao pode ter 1 usuario com o mesmo login
     @Override
     public Sistema saveUser(Sistema sistema) {
      if (sistemaRepository.existsByLogin(sistema.getLogin())){

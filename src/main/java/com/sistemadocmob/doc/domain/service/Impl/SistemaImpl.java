@@ -27,6 +27,7 @@ public class SistemaImpl implements SistemaService {
         return sistemaRepository.findById(id).orElseThrow(RuntimeException:: new);
     }
 
+    // deleta usuario pelo login
     @Transactional
     @Override
     public void deleteUserByLogin(String login) {

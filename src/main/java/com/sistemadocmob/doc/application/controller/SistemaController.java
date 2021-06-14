@@ -33,9 +33,17 @@ public class SistemaController {
         return  ResponseEntity.ok().build();
     }
 
-    //Criar Usaurio
+    //Criar Usuario
     @PostMapping("/sistema")
     public  ResponseEntity<Sistema> saveUser(@RequestBody Sistema sistema){
         return  ResponseEntity.ok(sistemaService.saveUser(sistema));
+
     }
+
+    //Update do Usuario
+    @PutMapping("sistema/{id}")
+    public  ResponseEntity<Sistema> updateUserById(@PathVariable Long id, @RequestBody Sistema sistema){
+        return ResponseEntity.ok(sistemaService.updateUserById(id, sistema));
+    }
+
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
@@ -43,6 +44,26 @@ public class SistemaImpl implements SistemaService {
      sistema.setUpdatedDate(LocalDateTime.now());
 
      return  sistemaRepository.save(sistema);
+    }
+
+
+    // Atualizacao do Usuario
+    @Override
+    public Sistema updateUserById(Long id, Sistema sistema) {
+        Optional<Sistema> sistemaOptional = sistemaRepository.findById(id);
+
+        if(!sistemaOptional.isPresent()){
+            throw  new RuntimeException();
+        }
+        Sistema sistemaExistent = sistemaOptional.get();
+        return  sistemaRepository.save(sistema.builder()
+                .id(sistemaExistent.getId()) // vai verificar se o id ja existe
+                .login(sistema.getLogin())
+                .senha(sistema.getSenha())
+                .email(sistema.getEmail())
+                .createdDate(sistemaExistent.getCreatedDate())
+                .updatedDate(LocalDateTime.now())
+                .build());
     }
 
 

@@ -12,4 +12,7 @@ public interface SistemaService {
         void deleteUserByLogin(String login); // deletar usuario pelo login
 
         Sistema saveUser(Sistema sistema); // Criar Usaurio
+
+        Sistema updateUserById(Long id ,Sistema sistema); // atualizar os dados dos ususarios
+
 }

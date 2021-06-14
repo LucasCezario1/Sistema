@@ -16,5 +16,5 @@ insert into "sistema" (login, email, senha, updated_date, created_date) VALUES (
 
 
 
-
+http://localhost:8080/swagger-ui.html#/
 docker run -d -p 3306:3306 -e POSTGRES_PASSWORD=password --name sistema postgres

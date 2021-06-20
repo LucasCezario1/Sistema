@@ -2,6 +2,7 @@ package com.sistemadocmob.doc.domain.service.Impl;
 
 import com.sistemadocmob.doc.domain.model.Sistema;
 import com.sistemadocmob.doc.domain.service.SistemaService;
+import com.sistemadocmob.doc.infrastructure.exception.SistemaNotFoundException;
 import com.sistemadocmob.doc.infrastructure.repository.SistemaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -22,10 +23,10 @@ public class SistemaImpl implements SistemaService {
         return sistemaRepository.findAll();
     }
 
-    // pega 1 usuario pelo id
+    // pega 1 usuario pelo id vou ta error pelo ID
     @Override
     public Sistema getUserById(Long id) {
-        return sistemaRepository.findById(id).orElseThrow(RuntimeException:: new);
+        return sistemaRepository.findById(id).orElseThrow( () -> new SistemaNotFoundException(id));
     }
 
     // deleta usuario pelo login
